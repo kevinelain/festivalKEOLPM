@@ -28,7 +28,7 @@ public class JFrameFestival extends javax.swing.JFrame {
     protected JPanelOffHeber pnlOffHeber = new JPanelOffHeber();
     protected JPanelTypeChListe pnlTypeChListe=new JPanelTypeChListe();
     protected JPanelTypeChAjout pnlAjoutTypeCh=new JPanelTypeChAjout();
-    protected JPanelAttCh pnlAttch=new JPanelAttCh();
+    protected JPanelAttCham pnlAttcham=new JPanelAttCham();
     private Container pnlPrinc = null;
     
 
@@ -169,8 +169,8 @@ public class JFrameFestival extends javax.swing.JFrame {
     }//GEN-LAST:event_jMnListTypChActionPerformed
 
     private void jMnListAttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnListAttActionPerformed
-           this.setContentPane(pnlAttch);
-           pnlAttch.chargerListeEtablissement();
+           this.setContentPane(pnlAttcham);
+           pnlAttcham.listEtablissement();
         pack();
     }//GEN-LAST:event_jMnListAttActionPerformed
 
