@@ -1,0 +1,3 @@
+# Ignorer le fichier 
+hibernate.config.xml
+/src/hibernate.cfg.xml

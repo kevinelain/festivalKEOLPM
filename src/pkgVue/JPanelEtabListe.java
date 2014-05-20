@@ -38,7 +38,7 @@ public class JPanelEtabListe extends javax.swing.JPanel {
         Iterator etab= qm.iterate();
         while (etab.hasNext()){
             Etablissement unEtablissement2 = (Etablissement) etab.next();
-            System.out.println(unEtablissement2.getEtaId());
+            //System.out.println(unEtablissement2.getEtaId());
             ((DefaultTableModel) jTableEtab.getModel()).addRow(new Object[]
             {unEtablissement2.getEtaId(), unEtablissement2.getEtaNom(), unEtablissement2.getEtaVille(),unEtablissement2.getEtaTel()});
            }
@@ -136,7 +136,6 @@ public class JPanelEtabListe extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Responsable");
 
-        cbCivil.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Mademoiselle", "Madame", "Monsieur" }));
         cbCivil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbCivilActionPerformed(evt);
@@ -176,7 +175,7 @@ public class JPanelEtabListe extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(112, 112, 112)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -276,7 +275,7 @@ public class JPanelEtabListe extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(txtPrenomResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jBtnModifier)
                             .addComponent(jBtnSupprimer))

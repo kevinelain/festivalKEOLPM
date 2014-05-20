@@ -169,8 +169,8 @@ public class JFrameFestival extends javax.swing.JFrame {
     }//GEN-LAST:event_jMnListTypChActionPerformed
 
     private void jMnListAttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnListAttActionPerformed
-           this.setContentPane(pnlAttch);
-           pnlAttch.chargerListeEtablissement();
+        this.setContentPane(pnlAttch);
+        pnlAttch.chargerListeEtablissement();
         pack();
     }//GEN-LAST:event_jMnListAttActionPerformed
 
