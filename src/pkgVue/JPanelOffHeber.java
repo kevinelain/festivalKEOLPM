@@ -22,7 +22,6 @@ public class JPanelOffHeber extends javax.swing.JPanel {
      */
     public JPanelOffHeber() {
         initComponents();
-       // chargerListeEtablissement();
     }
 
     /**
@@ -135,66 +134,76 @@ public class JPanelOffHeber extends javax.swing.JPanel {
         String sQuery ;
         
         sQuery = "from Etablissement";
-        JFrameFestival.getSession().beginTransaction();
         Query qm = JFrameFestival.getSession().createQuery(sQuery);
         Iterator etab= qm.iterate();
         while (etab.hasNext()){
             Etablissement unEtablissement = (Etablissement)etab.next();
            jCbOffHeber.addItem(unEtablissement.getEtaNom());
            }
-        
-        /*
-        String sReq = "from Etablissement where id = ?";
-        Query q = JFrameFestival.getSession().createQuery(sReq);
-        q.setParameter(0, jCbOffHeber.getSelectedItem().toString());
-        
-        Etablissement unEtalissement2 = (Etablissement)q.uniqueResult();
-        System.out.println(unEtalissement2);
-        String idEtab = unEtalissement2.getId();
-        */
-        
-        String sReq = "from Etablissement where Eta_Nom = ?";
-        Query q = JFrameFestival.getSession().createQuery(sReq);
-        q.setParameter(0, jCbOffHeber.getSelectedItem());
-        
-        Etablissement unEtalissement2 = (Etablissement) q.uniqueResult();
-        
-        System.out.println(unEtalissement2.getEtaId() + "    " + unEtalissement2.getEtaNom());
-        
-        chargerTabEtab(unEtalissement2);
+
+        chargerTabEtab();
         
     }
     
-    public void chargerTabEtab(Etablissement pEtab){
+    public void chargerTabEtab(){
         
-        /*
-        String sReq = "from Etablissement where nom = ?";
-        Query q = JFrameFestival.getSession().createQuery(sReq);
-        q.setParameter(0, pEtab.getId());
-        */
+        String sReq = "from Etablissement where Eta_Nom = ?";
+        Query qEtabs = JFrameFestival.getSession().createQuery(sReq);
+        qEtabs.setParameter(0, jCbOffHeber.getSelectedItem().toString());
         
-        //Etablissement unEtalissement2 = (Etablissement)q.uniqueResult();
-        //System.out.println(unEtalissement2.getId());
-        String idEtab = pEtab.getEtaId();
-        //jCbOffHeber.getSelectedItem().toString();
+        Etablissement unEtalissement = (Etablissement) qEtabs.uniqueResult();
         
-        JFrameFestival.getSession().beginTransaction();
-        String sQuery = "from Typechambre";
-        Query qTypeCh = JFrameFestival.getSession().createQuery(sQuery);
+        String idEtab = unEtalissement.getEtaId();
         
-        String sQuery2 = "from Offre where Off_Etablissement ";
+        String sQuery2 = "from Offre where Off_etablissement = ?";
+        Query qNbTypeCh = JFrameFestival.getSession().createQuery(sQuery2);
+        qNbTypeCh.setParameter(0, idEtab);
         
-        //à terminer
+//        String sQuery3 = "from Typechambre";
+//        Query qTypeCh = JFrameFestival.getSession().createQuery(sQuery3);
         
-        Iterator typecha = qTypeCh.iterate();
-        while (typecha.hasNext()){
-            Typechambre unTypeCh = (Typechambre) typecha.next();
-            Offre uneOffre = new Offre();
+        Iterator nbchdispo = qNbTypeCh.iterate();
+        
+        //Iterator typech = qTypeCh.iterate();
+
+        while (nbchdispo.hasNext()){
+            Offre uneOffre = (Offre) nbchdispo.next();
+            System.out.println(uneOffre.getOffNbchambres() + "  " + uneOffre.getEtablissement().getEtaNom()+"   "+uneOffre.getTypechambre());
+            //Typechambre unType = (Typechambre) typech.next();
             ((DefaultTableModel) jTabOffCh.getModel()).addRow(new Object[]
-            {unTypeCh.getTchId(), unTypeCh.getTchLibelle()});
-           }
+            {uneOffre.getTypechambre(), uneOffre.getTypechambre(), uneOffre.getOffNbchambres()});
+        }
+        
+        //chargerTypesChambre();
         
     }
+    
+//    public void chargerTypesChambre(){
+//        
+//        String sReq = "from Etablissement where Eta_Nom = ?";
+//        Query q = JFrameFestival.getSession().createQuery(sReq);
+//        q.setParameter(0, jCbOffHeber.getSelectedItem().toString());
+//        
+//        Etablissement unEtalissement = (Etablissement) q.uniqueResult();
+//        
+//        String idEtab = unEtalissement.getEtaId();
+//        
+//        System.out.println(unEtalissement.getEtaId() + "    " + unEtalissement.getEtaNom() + "    " + idEtab);
+//
+//        String sQuery2 = "from Offre where Off_etablissement = ?";
+//        Query qNbTypeCh = JFrameFestival.getSession().createQuery(sQuery2);
+//        qNbTypeCh.setParameter(0, idEtab);
+//        
+//        Iterator nbchdispo = qNbTypeCh.iterate();
+//        
+//        while (nbchdispo.hasNext()){
+//            Offre uneOffre = (Offre) nbchdispo.next();
+//            
+//            ((DefaultTableModel) jTabOffCh.getModel()).addRow(new Object[]
+//            { null, null, uneOffre.getOffNbchambres()});
+//        }
+//        
+//    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnModifier;
