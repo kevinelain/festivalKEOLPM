@@ -49,8 +49,11 @@
                   </Group>
               </Group>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <EmptySpace pref="229" max="32767" attributes="0"/>
 =======
+=======
+>>>>>>> dafc32fe59fc4ce04f279b81a9d530210533647a
               <EmptySpace pref="182" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
@@ -77,7 +80,11 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jBtnModifier" min="-2" max="-2" attributes="0"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+=======
+              <EmptySpace pref="528" max="32767" attributes="0"/>
+>>>>>>> dafc32fe59fc4ce04f279b81a9d530210533647a
 =======
               <EmptySpace pref="528" max="32767" attributes="0"/>
 >>>>>>> dafc32fe59fc4ce04f279b81a9d530210533647a

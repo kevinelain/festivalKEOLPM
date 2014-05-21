@@ -45,6 +45,8 @@ public class JPanelOffHeber extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(800, 800));
 
+        setPreferredSize(new java.awt.Dimension(800, 800));
+
         jCbOffHeber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCbOffHeberActionPerformed(evt);
@@ -127,6 +129,15 @@ public class JPanelOffHeber extends javax.swing.JPanel {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(229, Short.MAX_VALUE))
                         .addGap(339, 339, 339)
+<<<<<<< HEAD
+=======
+                        .addComponent(jBtnModifier)))
+                .addContainerGap(182, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jCbOffHeber, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(268, 268, 268))
+>>>>>>> dafc32fe59fc4ce04f279b81a9d530210533647a
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,7 +154,11 @@ public class JPanelOffHeber extends javax.swing.JPanel {
                 .addComponent(txtNbChambres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jBtnModifier)
+<<<<<<< HEAD
                 .addGap(49, 49, 49))
+=======
+                .addContainerGap(528, Short.MAX_VALUE))
+>>>>>>> dafc32fe59fc4ce04f279b81a9d530210533647a
         );
     }// </editor-fold>//GEN-END:initComponents
 
