@@ -17,7 +17,6 @@ import pkgEntite.HibernateUtil;
  * @author Kevin
  */
 public class JFrameFestival extends javax.swing.JFrame {
-    
     // Déclaration d’une session commune aux différentes interfaces
     public static Session session = HibernateUtil.getSessionFactory().openSession();
     private JPanelAccueil pnlAccueil = new JPanelAccueil();
@@ -37,6 +36,11 @@ public class JFrameFestival extends javax.swing.JFrame {
      * Creates new form JFrameFestival
      */
     public JFrameFestival() {
+        
+        this.setTitle("Application Festival");
+        this.setSize(800, 800);
+        this.setLocationRelativeTo(null);      
+        
         initComponents();
         this.setContentPane(pnlAccueil);
         pack(); //permet de rafraichir
@@ -73,6 +77,7 @@ public class JFrameFestival extends javax.swing.JFrame {
         jMnEffAtt = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(800, 800));
 
         jMnEtablissement.setText("Etablissements");
 
