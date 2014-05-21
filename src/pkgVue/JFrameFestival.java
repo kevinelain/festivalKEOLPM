@@ -208,6 +208,7 @@ public class JFrameFestival extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         this.setContentPane(pnlEffAttcham);
+        pnlEffAttcham.chargerListeEtablissement();
         pack();
     }//GEN-LAST:event_jMnEffAttActionPerformed
 

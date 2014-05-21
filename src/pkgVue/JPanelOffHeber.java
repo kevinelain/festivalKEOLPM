@@ -176,7 +176,7 @@ public class JPanelOffHeber extends javax.swing.JPanel {
     }//GEN-LAST:event_jBtnModifierActionPerformed
 
     public void chargerListeEtablissement(){    //charge la liste d'établissement dans la liste déroulante
-        
+        //jCbOffHeber.removeAllItems();
         String sQuery ;
         
         sQuery = "from Etablissement";
