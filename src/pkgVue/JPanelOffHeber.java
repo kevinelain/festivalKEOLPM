@@ -43,6 +43,8 @@ public class JPanelOffHeber extends javax.swing.JPanel {
         txtNbChambres = new javax.swing.JTextField();
         jBtnModifier = new javax.swing.JButton();
 
+        setPreferredSize(new java.awt.Dimension(800, 800));
+
         jCbOffHeber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCbOffHeberActionPerformed(evt);
@@ -111,7 +113,7 @@ public class JPanelOffHeber extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(339, 339, 339)
                         .addComponent(jBtnModifier)))
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(182, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jCbOffHeber, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -132,7 +134,7 @@ public class JPanelOffHeber extends javax.swing.JPanel {
                 .addComponent(txtNbChambres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
                 .addComponent(jBtnModifier)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(528, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

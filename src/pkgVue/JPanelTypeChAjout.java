@@ -40,7 +40,7 @@ public class JPanelTypeChAjout extends javax.swing.JPanel {
         txtTypeCh = new javax.swing.JTextField();
         txtLibCh = new javax.swing.JTextField();
 
-        setPreferredSize(new java.awt.Dimension(700, 520));
+        setPreferredSize(new java.awt.Dimension(800, 800));
 
         intitule.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         intitule.setText("Nouveau type de chambre");
@@ -78,7 +78,7 @@ public class JPanelTypeChAjout extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(220, 220, 220)
                 .addComponent(intitule)
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addContainerGap(317, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(151, 151, 151)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +106,7 @@ public class JPanelTypeChAjout extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(libIntitul)
                     .addComponent(txtLibCh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 643, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonValider)
                     .addComponent(buttonRetour))

@@ -28,7 +28,7 @@ public class JPanelAccueil extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(700, 520));
+        setPreferredSize(new java.awt.Dimension(800, 800));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 28)); // NOI18N
         jLabel1.setText("Bienvenue sur Festival");
@@ -47,7 +47,7 @@ public class JPanelAccueil extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(174, 174, 174)
                 .addComponent(jLabel1)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(793, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
