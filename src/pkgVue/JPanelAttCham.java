@@ -10,6 +10,7 @@ import org.hibernate.Query;
 import pkgEntite.Attribution;
 import pkgEntite.Etablissement;
 import pkgEntite.Groupe;
+import pkgEntite.Typechambre;
 
 /**
  *
@@ -51,6 +52,7 @@ public class JPanelAttCham extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableAffiAtt = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
         jTableEtabListAtt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,7 +69,7 @@ public class JPanelAttCham extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTableEtabListAtt);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Liste des etablissements");
 
         jTableAffiAtt.setModel(new javax.swing.table.DefaultTableModel(
@@ -75,13 +77,16 @@ public class JPanelAttCham extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Groupe", "Type de chambre", "Chambre disponibles"
+                "Groupe", "Type de chambre", "Chambre attribuées"
             }
         ));
         jScrollPane3.setViewportView(jTableAffiAtt);
         jTableAffiAtt.getColumnModel().getColumn(0).setMaxWidth(500);
-        jTableAffiAtt.getColumnModel().getColumn(1).setMaxWidth(200);
-        jTableAffiAtt.getColumnModel().getColumn(2).setMaxWidth(200);
+        jTableAffiAtt.getColumnModel().getColumn(1).setMaxWidth(300);
+        jTableAffiAtt.getColumnModel().getColumn(2).setMaxWidth(300);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Chambres attribuées par groupe pour chaque type de chambre:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -91,24 +96,29 @@ public class JPanelAttCham extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 60, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33))
-                    .addComponent(jScrollPane3)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(139, 139, 139))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(339, 339, 339))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(99, 99, 99))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -127,7 +137,7 @@ public class JPanelAttCham extends javax.swing.JPanel {
          public void listAttrib(Object cellule) // tableau d'affichage des attribution en fonction du groupe
      {
          JFrameFestival.getSession().beginTransaction();
-         String sReqa="from Attribution where ATT_ETABLISSEMENT = ?";
+         String sReqa="from Attribution where ATT_ETABLISSEMENT = ?";//selectionne les etablissements qui possendent une attribution
          Query q = JFrameFestival.getSession().createQuery(sReqa); //execute la requete
          q.setParameter(0, cellule.toString()); 
          Iterator attribution = q.iterate();
@@ -136,21 +146,29 @@ public class JPanelAttCham extends javax.swing.JPanel {
             Attribution unAttribution = ( Attribution) attribution.next(); 
 
             
-            String sReqg="from Groupe where GP_ID = ?";
+            String sReqg="from Groupe where GP_ID = ?";                 //recupere le nom du groupe qui a un a effectué une attribution
             Query qg = JFrameFestival.getSession().createQuery(sReqg); //execute la requete
-            qg.setParameter(0, unAttribution.getGroupe()); 
+            qg.setParameter(0, unAttribution.getGroupe());              //recupere le nom du groupe correspondant a l'id trouvé plus haut
             Iterator groupe = qg.iterate();//Aller au suivant
             
                  while (groupe.hasNext()){                                  //Tant qu'il a un suivant
                  Groupe unGroupe = ( Groupe) groupe.next(); 
-            ((DefaultTableModel) jTableAffiAtt.getModel()).addRow(new Object[]//Ajouter une ligne
-            {unGroupe.getGpNom(), unAttribution.getOffre().getId(), unAttribution.getAttNbchambres()});                    //Recupere l'id du libelle
+                 
+                 String sReqt="from Typechambre where TCh_Id  = ?";            //Recupere l'id du type chambre qui a ete reservé par un certain groupe
+                 Query qt = JFrameFestival.getSession().createQuery(sReqt); //execute la requete
+                 qt.setParameter(0, unAttribution.getId().getAttTypechambre());
+                 
+                 Typechambre unTypeChambre = (Typechambre)qt.uniqueResult();
+                 
+            ((DefaultTableModel) jTableAffiAtt.getModel()).addRow(new Object[]
+               {unGroupe.getGpNom(),unTypeChambre.getTchLibelle() , unAttribution.getAttNbchambres()});                      //affichage dans le tableau
            }
            }
      }
      
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTableAffiAtt;
