@@ -28,12 +28,10 @@ public class JPanelEtabListe extends javax.swing.JPanel {
     }
     
     public void listeEtablissements(){
+ 
+        viderTableau();
         
-        
-        String sQuery ;
-        
-        sQuery = "FROM Etablissement";
-        JFrameFestival.getSession().beginTransaction();
+        String sQuery = "FROM Etablissement";
         Query qm = JFrameFestival.getSession().createQuery(sQuery);
         Iterator etab= qm.iterate();
         while (etab.hasNext()){
@@ -42,7 +40,6 @@ public class JPanelEtabListe extends javax.swing.JPanel {
             ((DefaultTableModel) jTableEtab.getModel()).addRow(new Object[]
             {unEtablissement2.getEtaId(), unEtablissement2.getEtaNom(), unEtablissement2.getEtaVille(),unEtablissement2.getEtaTel()});
            }
-
     }
         
     @SuppressWarnings("unchecked")
@@ -298,28 +295,26 @@ public class JPanelEtabListe extends javax.swing.JPanel {
     private void jBtnModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnModifierActionPerformed
         // TODO add your handling code here:
         byte varTemp = 0;
-        Transaction tx = JFrameFestival.getSession().beginTransaction();
 
         String sReq = "FROM Etablissement where ETA_ID  = ?";
         Query q = JFrameFestival.getSession().createQuery(sReq);
         q.setParameter(0, txtId.getText());
-        
-        //System.out.println(q.uniqueResult().toString());
-        
+
         Etablissement unEtablissement = (Etablissement)q.uniqueResult();
-        unEtablissement.setEtaId(txtId.getText());
-        unEtablissement.setEtaNom(txtNom.getText());
-        unEtablissement.setEtaRue(txtAdresse.getText());
-        unEtablissement.setEtaCp(txtCP.getText());
-        unEtablissement.setEtaVille(txtVille.getText());
-        unEtablissement.setEtaTel(txtTel.getText());
-        unEtablissement.setEtaCivilresp(txtNomResp.getText());
-        unEtablissement.setEtaNomresp(cbCivil.getSelectedItem().toString());
-        unEtablissement.setEtaPrenomresp(txtPrenomResp.getText());
         
         if (unEtablissement!=null){
+            
+            unEtablissement.setEtaId(txtId.getText());
+            unEtablissement.setEtaNom(txtNom.getText());
+            unEtablissement.setEtaRue(txtAdresse.getText());
+            unEtablissement.setEtaCp(txtCP.getText());
+            unEtablissement.setEtaVille(txtVille.getText());
+            unEtablissement.setEtaTel(txtTel.getText());
+            unEtablissement.setEtaCivilresp(txtNomResp.getText());
+            unEtablissement.setEtaNomresp(cbCivil.getSelectedItem().toString());
+            unEtablissement.setEtaPrenomresp(txtPrenomResp.getText());
+            Transaction tx = JFrameFestival.getSession().beginTransaction();
             JFrameFestival.getSession().update(unEtablissement);
-
             tx.commit();
 
             JOptionPane.showMessageDialog(null, "Etablissement modifié avec succés");
@@ -375,16 +370,12 @@ public class JPanelEtabListe extends javax.swing.JPanel {
         Query q = JFrameFestival.getSession().createQuery(sReq);
         q.setParameter(0, txtId.getText());
         
-        //System.out.println(q.uniqueResult().toString());
-        
         Etablissement unEtablissement = (Etablissement)q.uniqueResult();
         
         if (unEtablissement!=null){
             
             JFrameFestival.getSession().delete(unEtablissement);
-
             tx.commit();
-
             JOptionPane.showMessageDialog(null, "Etablissement supprimé avec succés");
         }
         
@@ -398,6 +389,13 @@ public class JPanelEtabListe extends javax.swing.JPanel {
         txtPrenomResp.setText("");
     }//GEN-LAST:event_jBtnSupprimerActionPerformed
 
+    public void viderTableau(){
+        
+        DefaultTableModel modele = (DefaultTableModel)jTableEtab.getModel();
+        modele.setRowCount(0);
+        jTableEtab.setModel(modele);
+        jTableEtab.repaint();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbCivil;
     private javax.swing.JButton jBtnModifier;

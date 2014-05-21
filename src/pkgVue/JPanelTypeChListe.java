@@ -29,6 +29,7 @@ public class JPanelTypeChListe extends javax.swing.JPanel {
     
      public void listTypeCh()
     {
+        viderTableau();
         
        String sReqm = "from Typechambre";                           //Methode qui permet d'afficher les types de chambre dans le tableau
        Query qm = JFrameFestival.getSession().createQuery(sReqm);   //Execution de la requete
@@ -219,6 +220,14 @@ public class JPanelTypeChListe extends javax.swing.JPanel {
         
         idTypeCH.setText(unTypechambre.getTchId());             //Rempli les champs
         txtLibChMS.setText(unTypechambre.getTchLibelle());
+    }
+    
+    public void viderTableau(){
+        
+        DefaultTableModel modele = (DefaultTableModel)jTableChambre.getModel();
+        modele.setRowCount(0);
+        jTableChambre.setModel(modele);
+        jTableChambre.repaint();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel idTypeCH;

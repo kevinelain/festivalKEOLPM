@@ -5,8 +5,10 @@
 package pkgVue;
 
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.hibernate.Query;
+import org.hibernate.Transaction;
 import pkgEntite.Etablissement;
 import pkgEntite.Offre;
 import pkgEntite.Typechambre;
@@ -69,6 +71,11 @@ public class JPanelOffHeber extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jTabOffCh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabOffChMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTabOffCh);
         jTabOffCh.getColumnModel().getColumn(0).setResizable(false);
         jTabOffCh.getColumnModel().getColumn(0).setPreferredWidth(200);
@@ -78,6 +85,11 @@ public class JPanelOffHeber extends javax.swing.JPanel {
         jTabOffCh.getColumnModel().getColumn(2).setPreferredWidth(200);
 
         jBtnModifier.setText("Modifier");
+        jBtnModifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnModifierActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -126,10 +138,44 @@ public class JPanelOffHeber extends javax.swing.JPanel {
 
     private void jCbOffHeberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbOffHeberActionPerformed
         // TODO add your handling code here: 
-        
+        chargerTabEtab();
     }//GEN-LAST:event_jCbOffHeberActionPerformed
 
-    public void chargerListeEtablissement(){
+    private void jTabOffChMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabOffChMouseClicked
+        // TODO add your handling code here:
+        int ligne = jTabOffCh.getSelectedRow();
+        Object nbChambres = jTabOffCh.getValueAt(ligne, 2);
+        chargerChampsNbChambre(nbChambres);
+    }//GEN-LAST:event_jTabOffChMouseClicked
+
+    private void jBtnModifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnModifierActionPerformed
+        // TODO add your handling code here:    //lorsqu'on clique sur le bouton Modifier
+        int ligne = jTabOffCh.getSelectedRow();
+        Object typeChambre = jTabOffCh.getValueAt(ligne, 0);
+        
+        String idEtab = selectEtab();
+        
+        String sReq = "FROM Offre where Off_Typechambre  = ? and Off_Etablissement = ?";        //selection de l'offre
+        Query q = JFrameFestival.getSession().createQuery(sReq);
+        q.setParameter(0, typeChambre.toString());
+        q.setParameter(1, idEtab);
+        
+        Offre uneOffre = (Offre)q.uniqueResult();           //resultat de la requete en objet Offre
+        
+        if (uneOffre!=null){    //si objet Offre existe et valide, alors update du nombre de chambre entré dans le champs
+            uneOffre.setOffNbchambres(Byte.parseByte(txtNbChambres.getText()));
+            Transaction tx = JFrameFestival.getSession().beginTransaction();
+            JFrameFestival.getSession().update(uneOffre);
+            tx.commit();
+            
+            JOptionPane.showMessageDialog(null, "Nombre de chambres disponibles modifiées avec succés");
+        }
+        
+        txtNbChambres.setText("");
+        
+    }//GEN-LAST:event_jBtnModifierActionPerformed
+
+    public void chargerListeEtablissement(){    //charge la liste d'établissement dans la liste déroulante
         
         String sQuery ;
         
@@ -138,14 +184,39 @@ public class JPanelOffHeber extends javax.swing.JPanel {
         Iterator etab= qm.iterate();
         while (etab.hasNext()){
             Etablissement unEtablissement = (Etablissement)etab.next();
-           jCbOffHeber.addItem(unEtablissement.getEtaNom());
-           }
+            jCbOffHeber.addItem(unEtablissement.getEtaNom());
+        }
 
         chargerTabEtab();
-        
     }
     
-    public void chargerTabEtab(){
+    public void chargerTabEtab(){   // charge la liste des chambres disponibles selon les établissements
+        
+        viderTableau();
+
+        String idEtab = selectEtab();
+        
+        String sQuery2 = "from Offre where Off_etablissement = ?";
+        Query qNbTypeCh = JFrameFestival.getSession().createQuery(sQuery2);
+        qNbTypeCh.setParameter(0, idEtab);
+         
+        Iterator nbchdispo = qNbTypeCh.iterate();
+        
+        while (nbchdispo.hasNext()){
+            Offre uneOffre = (Offre) nbchdispo.next();  //tant qu'il y a une offre de chambres pour l'établissement, continuer
+            
+            String sQuery3 = "from Typechambre where Tch_Id = ?";
+            Query qTypeCh = JFrameFestival.getSession().createQuery(sQuery3);
+            qTypeCh.setParameter(0, uneOffre.getId().getOffTypechambre());
+            Typechambre unTypeChambre = (Typechambre) qTypeCh.uniqueResult();
+            
+            ((DefaultTableModel) jTabOffCh.getModel()).addRow(new Object[]
+            {uneOffre.getId().getOffTypechambre(), unTypeChambre.getTchLibelle(), uneOffre.getOffNbchambres()});
+        }
+                
+    }
+    
+    public String selectEtab(){     //retourne l'ID de l'établissement séléctionné dans la liste déroulante
         
         String sReq = "from Etablissement where Eta_Nom = ?";
         Query qEtabs = JFrameFestival.getSession().createQuery(sReq);
@@ -155,55 +226,23 @@ public class JPanelOffHeber extends javax.swing.JPanel {
         
         String idEtab = unEtalissement.getEtaId();
         
-        String sQuery2 = "from Offre where Off_etablissement = ?";
-        Query qNbTypeCh = JFrameFestival.getSession().createQuery(sQuery2);
-        qNbTypeCh.setParameter(0, idEtab);
-        
-//        String sQuery3 = "from Typechambre";
-//        Query qTypeCh = JFrameFestival.getSession().createQuery(sQuery3);
-        
-        Iterator nbchdispo = qNbTypeCh.iterate();
-        
-        //Iterator typech = qTypeCh.iterate();
-
-        while (nbchdispo.hasNext()){
-            Offre uneOffre = (Offre) nbchdispo.next();
-            System.out.println(uneOffre.getOffNbchambres() + "  " + uneOffre.getEtablissement().getEtaNom()+"   "+uneOffre.getTypechambre());
-            //Typechambre unType = (Typechambre) typech.next();
-            ((DefaultTableModel) jTabOffCh.getModel()).addRow(new Object[]
-            {uneOffre.getTypechambre(), uneOffre.getTypechambre(), uneOffre.getOffNbchambres()});
-        }
-        
-        //chargerTypesChambre();
-        
+        return idEtab;
     }
     
-//    public void chargerTypesChambre(){
-//        
-//        String sReq = "from Etablissement where Eta_Nom = ?";
-//        Query q = JFrameFestival.getSession().createQuery(sReq);
-//        q.setParameter(0, jCbOffHeber.getSelectedItem().toString());
-//        
-//        Etablissement unEtalissement = (Etablissement) q.uniqueResult();
-//        
-//        String idEtab = unEtalissement.getEtaId();
-//        
-//        System.out.println(unEtalissement.getEtaId() + "    " + unEtalissement.getEtaNom() + "    " + idEtab);
-//
-//        String sQuery2 = "from Offre where Off_etablissement = ?";
-//        Query qNbTypeCh = JFrameFestival.getSession().createQuery(sQuery2);
-//        qNbTypeCh.setParameter(0, idEtab);
-//        
-//        Iterator nbchdispo = qNbTypeCh.iterate();
-//        
-//        while (nbchdispo.hasNext()){
-//            Offre uneOffre = (Offre) nbchdispo.next();
-//            
-//            ((DefaultTableModel) jTabOffCh.getModel()).addRow(new Object[]
-//            { null, null, uneOffre.getOffNbchambres()});
-//        }
-//        
-//    }
+    public void viderTableau(){     //vide le tableau pour avoir un tableau "propre" et éviter les "accumulations"
+        
+        DefaultTableModel modele = (DefaultTableModel)jTabOffCh.getModel();
+        modele.setRowCount(0);
+        jTabOffCh.setModel(modele);
+        jTabOffCh.repaint();
+    }
+            
+    
+    public void chargerChampsNbChambre(Object pNbChambres){     //charge le champs txtNbChambres
+        
+        txtNbChambres.setText(pNbChambres.toString());
+        
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnModifier;
