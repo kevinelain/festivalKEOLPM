@@ -56,7 +56,7 @@ public class JPanelTypeChListe extends javax.swing.JPanel {
         jButtonSuppTypeCh = new javax.swing.JButton();
         idTypeCH = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(700, 520));
+        setPreferredSize(new java.awt.Dimension(800, 800));
 
         jTableChambre.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         jTableChambre.setModel(new javax.swing.table.DefaultTableModel(
@@ -103,10 +103,10 @@ public class JPanelTypeChListe extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(266, 266, 266)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(324, 324, 324)
                         .addComponent(jLabel2)
                         .addGap(117, 117, 117)))
                 .addContainerGap(228, Short.MAX_VALUE))
@@ -137,7 +137,7 @@ public class JPanelTypeChListe extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)

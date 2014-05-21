@@ -17,7 +17,6 @@ import pkgEntite.HibernateUtil;
  * @author Kevin
  */
 public class JFrameFestival extends javax.swing.JFrame {
-    
     // Déclaration d’une session commune aux différentes interfaces
     public static Session session = HibernateUtil.getSessionFactory().openSession();
     private JPanelAccueil pnlAccueil = new JPanelAccueil();
@@ -29,6 +28,7 @@ public class JFrameFestival extends javax.swing.JFrame {
     protected JPanelTypeChListe pnlTypeChListe=new JPanelTypeChListe();
     protected JPanelTypeChAjout pnlAjoutTypeCh=new JPanelTypeChAjout();
     protected JPanelAttCham pnlAttcham=new JPanelAttCham();
+    protected JPanelEffAttCham pnlEffAttcham=new JPanelEffAttCham();
     private Container pnlPrinc = null;
     
 
@@ -36,6 +36,11 @@ public class JFrameFestival extends javax.swing.JFrame {
      * Creates new form JFrameFestival
      */
     public JFrameFestival() {
+        
+        this.setTitle("Application Festival");
+        this.setSize(800, 800);
+        this.setLocationRelativeTo(null);      
+        
         initComponents();
         this.setContentPane(pnlAccueil);
         pack(); //permet de rafraichir
@@ -59,7 +64,6 @@ public class JFrameFestival extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
         jMnEtablissement = new javax.swing.JMenu();
         jMnListEtab = new javax.swing.JMenuItem();
         jMnAjoutEtab = new javax.swing.JMenuItem();
@@ -67,19 +71,17 @@ public class JFrameFestival extends javax.swing.JFrame {
         jMnListTypCh = new javax.swing.JMenuItem();
         jMnAjoutTypCh = new javax.swing.JMenuItem();
         jMnOffHber = new javax.swing.JMenu();
-        jMnOffHeber = new javax.swing.JMenuItem();
+        jMenuOffHeb = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMnListAtt = new javax.swing.JMenuItem();
         jMnEffAtt = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jMenu1.setText("Fichier");
-        jMenuBar1.add(jMenu1);
+        setPreferredSize(new java.awt.Dimension(800, 800));
 
         jMnEtablissement.setText("Etablissements");
 
-        jMnListEtab.setText("Liste");
+        jMnListEtab.setText("Liste               ");
         jMnListEtab.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMnListEtabActionPerformed(evt);
@@ -98,8 +100,10 @@ public class JFrameFestival extends javax.swing.JFrame {
         jMenuBar1.add(jMnEtablissement);
 
         jMnTypeCh.setText("Type de chambres");
+        jMnTypeCh.setPreferredSize(new java.awt.Dimension(115, 19));
 
-        jMnListTypCh.setText("Liste");
+        jMnListTypCh.setText("Liste    ");
+        jMnListTypCh.setPreferredSize(new java.awt.Dimension(99, 22));
         jMnListTypCh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMnListTypChActionPerformed(evt);
@@ -119,13 +123,13 @@ public class JFrameFestival extends javax.swing.JFrame {
 
         jMnOffHber.setText("Offre d'hébergements");
 
-        jMnOffHeber.setText("Offres d'hébergements");
-        jMnOffHeber.addActionListener(new java.awt.event.ActionListener() {
+        jMenuOffHeb.setText("Offre d'hébergements");
+        jMenuOffHeb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMnOffHeberActionPerformed(evt);
+                jMenuOffHebActionPerformed(evt);
             }
         });
-        jMnOffHber.add(jMnOffHeber);
+        jMnOffHber.add(jMenuOffHeb);
 
         jMenuBar1.add(jMnOffHber);
 
@@ -140,6 +144,11 @@ public class JFrameFestival extends javax.swing.JFrame {
         jMenu5.add(jMnListAtt);
 
         jMnEffAtt.setText("Effectuer attribution");
+        jMnEffAtt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMnEffAttActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMnEffAtt);
 
         jMenuBar1.add(jMenu5);
@@ -150,11 +159,11 @@ public class JFrameFestival extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 841, Short.MAX_VALUE)
+            .addGap(0, 675, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 558, Short.MAX_VALUE)
+            .addGap(0, 288, Short.MAX_VALUE)
         );
 
         pack();
@@ -190,10 +199,7 @@ public class JFrameFestival extends javax.swing.JFrame {
     }//GEN-LAST:event_jMnAjoutEtabActionPerformed
 
     private void jMnOffHeberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnOffHeberActionPerformed
-        // TODO add your handling code here:
-        this.setContentPane(pnlOffHeber);
-        pnlOffHeber.chargerListeEtablissement();
-        pack();
+        // TODO add your handling 
     }//GEN-LAST:event_jMnOffHeberActionPerformed
 
     private void jMnAjoutTypChActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnAjoutTypChActionPerformed
@@ -202,6 +208,20 @@ public class JFrameFestival extends javax.swing.JFrame {
         this.setContentPane(pnlAjoutTypeCh);
         pack();
     }//GEN-LAST:event_jMnAjoutTypChActionPerformed
+
+    private void jMnEffAttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnEffAttActionPerformed
+        // TODO add your handling code here:
+        
+        this.setContentPane(pnlEffAttcham);
+        pnlEffAttcham.chargerListeEtablissement();
+        pack();
+    }//GEN-LAST:event_jMnEffAttActionPerformed
+
+    private void jMenuOffHebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuOffHebActionPerformed
+            this.setContentPane(pnlOffHeber);
+        pnlOffHeber.chargerListeEtablissement();
+        pack();
+    }//GEN-LAST:event_jMenuOffHebActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,9 +258,9 @@ public class JFrameFestival extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuOffHeb;
     private javax.swing.JMenuItem jMnAjoutEtab;
     private javax.swing.JMenuItem jMnAjoutTypCh;
     private javax.swing.JMenuItem jMnEffAtt;
@@ -249,7 +269,6 @@ public class JFrameFestival extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMnListEtab;
     private javax.swing.JMenuItem jMnListTypCh;
     private javax.swing.JMenu jMnOffHber;
-    private javax.swing.JMenuItem jMnOffHeber;
     private javax.swing.JMenu jMnTypeCh;
     // End of variables declaration//GEN-END:variables
 }

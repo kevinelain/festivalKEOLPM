@@ -43,6 +43,14 @@ public class JPanelOffHeber extends javax.swing.JPanel {
         jBtnModifier = new javax.swing.JButton();
         jCbOffHeber = new javax.swing.JComboBox();
 
+        setPreferredSize(new java.awt.Dimension(800, 800));
+
+        jCbOffHeber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCbOffHeberActionPerformed(evt);
+            }
+        });
+
         jLblTitre1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLblTitre1.setText("Etablissements");
 
@@ -118,6 +126,7 @@ public class JPanelOffHeber extends javax.swing.JPanel {
                         .addGap(160, 160, 160)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(229, Short.MAX_VALUE))
+                        .addGap(339, 339, 339)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,6 +187,7 @@ public class JPanelOffHeber extends javax.swing.JPanel {
     }//GEN-LAST:event_jCbOffHeberActionPerformed
 
     public void chargerListeEtablissement(){    //charge la liste d'établissement dans la liste déroulante
+        //jCbOffHeber.removeAllItems();
         String sQuery ;
         
         sQuery = "from Etablissement";
