@@ -51,7 +51,6 @@ public class JPanelEtabListe extends javax.swing.JPanel {
         jLblTitre1 = new javax.swing.JLabel();
         jLblTitre2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtNom = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -70,6 +69,7 @@ public class JPanelEtabListe extends javax.swing.JPanel {
         txtPrenomResp = new javax.swing.JTextField();
         jBtnModifier = new javax.swing.JButton();
         jBtnSupprimer = new javax.swing.JButton();
+        lblID = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(800, 800));
 
@@ -107,12 +107,6 @@ public class JPanelEtabListe extends javax.swing.JPanel {
         jLblTitre2.setText("Informations");
 
         jLabel1.setText("ID");
-
-        txtId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Nom");
 
@@ -192,12 +186,12 @@ public class JPanelEtabListe extends javax.swing.JPanel {
                     .addComponent(txtCP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAdresse, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNom, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtVille, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                    .addComponent(lblID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel8)
@@ -233,10 +227,32 @@ public class JPanelEtabListe extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(13, 13, 13)
                 .addComponent(jLblTitre2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtNomResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(txtPrenomResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 369, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBtnModifier)
+                            .addComponent(jBtnSupprimer))
+                        .addGap(33, 33, 33))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -255,34 +271,9 @@ public class JPanelEtabListe extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
-                        .addContainerGap(15, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbCivil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtNomResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(txtPrenomResp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jBtnModifier)
-                            .addComponent(jBtnSupprimer))
-                        .addGap(33, 33, 33))))
+                        .addContainerGap(15, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdActionPerformed
 
     private void txtTelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelActionPerformed
         // TODO add your handling code here:
@@ -298,20 +289,19 @@ public class JPanelEtabListe extends javax.swing.JPanel {
 
         String sReq = "FROM Etablissement where ETA_ID  = ?";
         Query q = JFrameFestival.getSession().createQuery(sReq);
-        q.setParameter(0, txtId.getText());
+        q.setParameter(0, lblID.getText());
 
         Etablissement unEtablissement = (Etablissement)q.uniqueResult();
+        Object idEtab = lblID.getText();
         
         if (unEtablissement!=null){
-            
-            unEtablissement.setEtaId(txtId.getText());
             unEtablissement.setEtaNom(txtNom.getText());
             unEtablissement.setEtaRue(txtAdresse.getText());
             unEtablissement.setEtaCp(txtCP.getText());
             unEtablissement.setEtaVille(txtVille.getText());
             unEtablissement.setEtaTel(txtTel.getText());
-            unEtablissement.setEtaCivilresp(txtNomResp.getText());
-            unEtablissement.setEtaNomresp(cbCivil.getSelectedItem().toString());
+            unEtablissement.setEtaCivilresp(cbCivil.getSelectedItem().toString());
+            unEtablissement.setEtaNomresp(txtNomResp.getText());
             unEtablissement.setEtaPrenomresp(txtPrenomResp.getText());
             Transaction tx = JFrameFestival.getSession().beginTransaction();
             JFrameFestival.getSession().update(unEtablissement);
@@ -320,16 +310,9 @@ public class JPanelEtabListe extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Etablissement modifié avec succés");
         }
         
-        txtId.setText("");
-        txtNom.setText("");
-        txtAdresse.setText("");
-        txtCP.setText("");
-        txtVille.setText("");
-        txtTel.setText("");
-        txtNomResp.setText("");
-        txtPrenomResp.setText("");
-        
-        
+        viderChamps();
+
+        chargerChamps(idEtab);
     }//GEN-LAST:event_jBtnModifierActionPerformed
 
     private void chargerChamps(Object objet){
@@ -341,7 +324,33 @@ public class JPanelEtabListe extends javax.swing.JPanel {
 
         Etablissement unEtablissement = (Etablissement)q.uniqueResult();
         
-        txtId.setText(unEtablissement.getEtaId());
+        cbCivil.removeAllItems();
+        //permet de remplir la combobox selon la civilité du responsable de l'établissement
+        switch (unEtablissement.getEtaCivilresp()) {
+            case "Monsieur":
+                cbCivil.addItem(unEtablissement.getEtaCivilresp());
+                cbCivil.addItem("Madame");
+                cbCivil.addItem("Mademoiselle");
+                break;
+            case "Madame":
+                cbCivil.addItem(unEtablissement.getEtaCivilresp());
+                cbCivil.addItem("Mademoiselle");
+                cbCivil.addItem("Monsieur");
+                break;
+            case "Mademoiselle":
+                cbCivil.addItem(unEtablissement.getEtaCivilresp());
+                cbCivil.addItem("Madame");
+                cbCivil.addItem("Monsieur");
+                break;
+            default:
+                cbCivil.addItem("Mademoiselle");
+                cbCivil.addItem("Madame");
+                cbCivil.addItem("Monsieur");
+                break;
+        }
+        
+        //remplit les champs selon l'établissement séléctionné dans le tableau
+        lblID.setText(unEtablissement.getEtaId());
         txtNom.setText(unEtablissement.getEtaNom());
         txtAdresse.setText(unEtablissement.getEtaRue());
         txtCP.setText(unEtablissement.getEtaCp());
@@ -349,37 +358,45 @@ public class JPanelEtabListe extends javax.swing.JPanel {
         txtTel.setText(unEtablissement.getEtaTel());
         txtNomResp.setText(unEtablissement.getEtaNomresp());
         txtPrenomResp.setText(unEtablissement.getEtaPrenomresp());
-        cbCivil.setSelectedItem(cbCivil.getSelectedItem().toString());
     }
     private void jTableEtabMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableEtabMouseClicked
         // TODO add your handling code here:
+        //lorsqu'on clique sur une des lignes du tableau, ça charge les champs
         int ligne = jTableEtab.getSelectedRow();
-        
         Object idEtab = jTableEtab.getValueAt(ligne, 0);
-        
         chargerChamps(idEtab);
     }//GEN-LAST:event_jTableEtabMouseClicked
 
     private void jBtnSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSupprimerActionPerformed
         // TODO add your handling code here:
-
         byte varTemp = 0;
-        Transaction tx = JFrameFestival.getSession().beginTransaction();
 
         String sReq = "from Etablissement where id = ?";
         Query q = JFrameFestival.getSession().createQuery(sReq);
-        q.setParameter(0, txtId.getText());
+        q.setParameter(0, lblID.getText());
         
         Etablissement unEtablissement = (Etablissement)q.uniqueResult();
         
         if (unEtablissement!=null){
-            
+            Transaction tx = JFrameFestival.getSession().beginTransaction();
             JFrameFestival.getSession().delete(unEtablissement);
             tx.commit();
+            
             JOptionPane.showMessageDialog(null, "Etablissement supprimé avec succés");
         }
         
-        txtId.setText("");
+        viderChamps();
+    }//GEN-LAST:event_jBtnSupprimerActionPerformed
+
+    public void viderTableau(){
+        DefaultTableModel modele = (DefaultTableModel)jTableEtab.getModel();
+        modele.setRowCount(0);
+        jTableEtab.setModel(modele);
+        jTableEtab.repaint();
+    }
+    
+    public void viderChamps(){
+        lblID.setText("");
         txtNom.setText("");
         txtAdresse.setText("");
         txtCP.setText("");
@@ -387,15 +404,8 @@ public class JPanelEtabListe extends javax.swing.JPanel {
         txtTel.setText("");
         txtNomResp.setText("");
         txtPrenomResp.setText("");
-    }//GEN-LAST:event_jBtnSupprimerActionPerformed
-
-    public void viderTableau(){
-        
-        DefaultTableModel modele = (DefaultTableModel)jTableEtab.getModel();
-        modele.setRowCount(0);
-        jTableEtab.setModel(modele);
-        jTableEtab.repaint();
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbCivil;
     private javax.swing.JButton jBtnModifier;
@@ -413,9 +423,9 @@ public class JPanelEtabListe extends javax.swing.JPanel {
     private javax.swing.JLabel jLblTitre2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableEtab;
+    private javax.swing.JLabel lblID;
     private javax.swing.JTextField txtAdresse;
     private javax.swing.JTextField txtCP;
-    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNom;
     private javax.swing.JTextField txtNomResp;
     private javax.swing.JTextField txtPrenomResp;

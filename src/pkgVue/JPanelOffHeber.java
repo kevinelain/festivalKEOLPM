@@ -35,15 +35,13 @@ public class JPanelOffHeber extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCbOffHeber = new javax.swing.JComboBox();
         jLblTitre1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTabOffCh = new javax.swing.JTable();
         txtNbChambres = new javax.swing.JTextField();
         jBtnModifier = new javax.swing.JButton();
-        jCbOffHeber = new javax.swing.JComboBox();
-
-        setPreferredSize(new java.awt.Dimension(800, 800));
 
         setPreferredSize(new java.awt.Dimension(800, 800));
 
@@ -85,21 +83,13 @@ public class JPanelOffHeber extends javax.swing.JPanel {
         jTabOffCh.getColumnModel().getColumn(0).setPreferredWidth(200);
         jTabOffCh.getColumnModel().getColumn(1).setResizable(false);
         jTabOffCh.getColumnModel().getColumn(1).setPreferredWidth(200);
-        jTabOffCh.getColumnModel().getColumn(1).setHeaderValue("Capacité");
         jTabOffCh.getColumnModel().getColumn(2).setResizable(false);
         jTabOffCh.getColumnModel().getColumn(2).setPreferredWidth(200);
-        jTabOffCh.getColumnModel().getColumn(2).setHeaderValue("Nombre de chambres");
 
         jBtnModifier.setText("Modifier");
         jBtnModifier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnModifierActionPerformed(evt);
-            }
-        });
-
-        jCbOffHeber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCbOffHeberActionPerformed(evt);
             }
         });
 
@@ -110,57 +100,43 @@ public class JPanelOffHeber extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jLblTitre1))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLblTitre1)))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(259, 259, 259)
-                        .addComponent(jCbOffHeber, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(314, 314, 314)
-                        .addComponent(jBtnModifier))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(275, 275, 275)
+                        .addGap(304, 304, 304)
                         .addComponent(txtNbChambres, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(229, Short.MAX_VALUE))
                         .addGap(339, 339, 339)
-<<<<<<< HEAD
-=======
                         .addComponent(jBtnModifier)))
                 .addContainerGap(182, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jCbOffHeber, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(268, 268, 268))
->>>>>>> dafc32fe59fc4ce04f279b81a9d530210533647a
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLblTitre1)
-                .addGap(34, 34, 34)
+                .addGap(21, 21, 21)
                 .addComponent(jCbOffHeber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(45, 45, 45)
+                .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(txtNbChambres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(43, 43, 43)
+                .addComponent(txtNbChambres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
                 .addComponent(jBtnModifier)
-<<<<<<< HEAD
-                .addGap(49, 49, 49))
-=======
                 .addContainerGap(528, Short.MAX_VALUE))
->>>>>>> dafc32fe59fc4ce04f279b81a9d530210533647a
         );
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>      
 
     private void jTabOffChMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabOffChMouseClicked
         // TODO add your handling code here:
@@ -198,11 +174,12 @@ public class JPanelOffHeber extends javax.swing.JPanel {
 
     private void jCbOffHeberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCbOffHeberActionPerformed
         // TODO add your handling code here:
+        
         chargerTabEtab();
     }//GEN-LAST:event_jCbOffHeberActionPerformed
 
     public void chargerListeEtablissement(){    //charge la liste d'établissement dans la liste déroulante
-        //jCbOffHeber.removeAllItems();
+
         String sQuery ;
         
         sQuery = "from Etablissement";
@@ -213,7 +190,7 @@ public class JPanelOffHeber extends javax.swing.JPanel {
             jCbOffHeber.addItem(unEtablissement.getEtaNom());
         }
 
-        chargerTabEtab();
+        //chargerTabEtab();
     }
     
     public void chargerTabEtab(){   // charge la liste des chambres disponibles selon les établissements
@@ -264,10 +241,10 @@ public class JPanelOffHeber extends javax.swing.JPanel {
             
     
     public void chargerChampsNbChambre(Object pNbChambres){     //charge le champs txtNbChambres
-        
-        txtNbChambres.setText(pNbChambres.toString());
-        
+
+        txtNbChambres.setText(pNbChambres.toString());   
     }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnModifier;

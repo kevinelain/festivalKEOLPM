@@ -203,22 +203,20 @@ public class JFrameFestival extends javax.swing.JFrame {
     }//GEN-LAST:event_jMnOffHeberActionPerformed
 
     private void jMnAjoutTypChActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnAjoutTypChActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here:s
         this.setContentPane(pnlAjoutTypeCh);
         pack();
     }//GEN-LAST:event_jMnAjoutTypChActionPerformed
 
     private void jMnEffAttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnEffAttActionPerformed
         // TODO add your handling code here:
-        
         this.setContentPane(pnlEffAttcham);
         pnlEffAttcham.chargerListeEtablissement();
         pack();
     }//GEN-LAST:event_jMnEffAttActionPerformed
 
     private void jMenuOffHebActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuOffHebActionPerformed
-            this.setContentPane(pnlOffHeber);
+        this.setContentPane(pnlOffHeber);
         pnlOffHeber.chargerListeEtablissement();
         pack();
     }//GEN-LAST:event_jMenuOffHebActionPerformed
