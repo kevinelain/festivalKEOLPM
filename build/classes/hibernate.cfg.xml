@@ -5,8 +5,8 @@
     <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
     <property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
     <property name="hibernate.connection.url">jdbc:oracle:thin:@172.30.10.100:1521:BAZSIO</property>
-    <property name="hibernate.connection.username">system</property>
-    <property name="hibernate.connection.password">mpsystem</property>
+    <property name="hibernate.connection.username">userfesti</property>
+    <property name="hibernate.connection.password">mpuserfesti</property>
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</property>
     <mapping resource="pkgEntite/Typechambre.hbm.xml"/>
